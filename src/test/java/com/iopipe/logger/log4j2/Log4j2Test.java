@@ -26,10 +26,16 @@ public class Log4j2Test
 	@Test
 	public void test()
 	{
-		_LOGGER.debug("Debug");
-		_LOGGER.info("Info");
-		_LOGGER.warn("Warning");
-		_LOGGER.error("Error", new Throwable("Oopsie!"));
+		IOpipeService.instance().<Object>run(new MockContext("log4j2-test"),
+			(__exec) ->
+			{
+				_LOGGER.debug("Debug");
+				_LOGGER.info("Info");
+				_LOGGER.warn("Warning");
+				_LOGGER.error("Error", new Throwable("Oopsie!"));
+				
+				return null;
+			});
 	}
 }
 

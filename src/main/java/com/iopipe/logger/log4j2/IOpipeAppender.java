@@ -2,6 +2,7 @@ package com.iopipe.logger.log4j2;
 
 import com.iopipe.plugin.logger.LoggerUtil;
 import java.io.Serializable;
+import java.util.Objects;
 import org.apache.logging.log4j.core.Appender;
 import org.apache.logging.log4j.core.appender.AbstractAppender;
 import org.apache.logging.log4j.core.config.plugins.Plugin;
@@ -13,6 +14,7 @@ import org.apache.logging.log4j.core.Filter;
 import org.apache.logging.log4j.core.Layout;
 import org.apache.logging.log4j.core.layout.PatternLayout;
 import org.apache.logging.log4j.core.LogEvent;
+import org.apache.logging.log4j.message.Message;
 
 /**
  * This implements the appender for Log4j2.
@@ -53,7 +55,15 @@ public class IOpipeAppender
 		if (__e == null)
 			return;
 		
-		throw new Error("Called with event " + __e);
+		
+		StackTraceElement src = __e.getSource();
+		Message m = __e.getMessage();
+		
+		LoggerUtil.log(
+			__e.getTimeMillis(),
+			Objects.toString(__e.getLevel()),
+			(src == null ? null : src.getClassName() + "." + src.getMethodName()),
+			(m == null ? null : m.getFormattedMessage()));
 	}
 	
 	/**
@@ -77,7 +87,6 @@ public class IOpipeAppender
 	 		(__layout != null ? __layout :
 	 			PatternLayout.createDefaultLayout()),
 	 		true);
-	 		
 	 }
 }
 
