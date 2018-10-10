@@ -1,6 +1,8 @@
-package com.iopipe.logger.tinylog;
+package com.iopipe.logger.log4j2;
 
 import com.iopipe.IOpipeService;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,6 +14,10 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class Log4j2Test
 {
+	/** Logging. */
+	private static final Logger _LOGGER =
+		LogManager.getLogger(Log4j2Test.class);
+
 	/**
 	 * Tests the logging.
 	 *
@@ -20,7 +26,10 @@ public class Log4j2Test
 	@Test
 	public void test()
 	{
-		throw new Error("TODO");
+		_LOGGER.debug("Debug");
+		_LOGGER.info("Info");
+		_LOGGER.warn("Warning");
+		_LOGGER.error("Error", new Throwable("Oopsie!"));
 	}
 }
 

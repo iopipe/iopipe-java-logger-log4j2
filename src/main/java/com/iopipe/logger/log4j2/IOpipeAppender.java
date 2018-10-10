@@ -53,7 +53,7 @@ public class IOpipeAppender
 		if (__e == null)
 			return;
 		
-		throw new Error("TODO");
+		throw new Error("Called with event " + __e);
 	}
 	
 	/**

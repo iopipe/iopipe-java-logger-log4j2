@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="error">
+  <Appenders>
+    <IOpipe name="IOpipe">
+    </IOpipe>
+  </Appenders>
+  <Loggers>
+    <Logger name="com.iopipe.logger.log4j2" level="debug">
+    </Logger>
+    <Root level="error">
+      <AppenderRef ref="IOpipe" />
+    </Root>
+  </Loggers>
+</Configuration>
+
