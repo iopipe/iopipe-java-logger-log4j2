@@ -93,8 +93,8 @@
   </repositories>
   <distributionManagement>
     <repository>
-      <id>bintray</id>
-      <name>bintray</name>
+      <id>bintray-repository</id>
+      <name>bintray-repository</name>
       <url>https://api.bintray.com/maven/iopipe/iopipe-logger-log4j2/iopipe-logger-log4j2/;publish=1</url>
     </repository>
   </distributionManagement>
