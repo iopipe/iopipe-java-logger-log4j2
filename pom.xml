@@ -4,16 +4,16 @@
   <groupId>com.iopipe</groupId>
   <artifactId>iopipe-logger-log4j2</artifactId>
   <packaging>jar</packaging>
-  <version>1.0.3</version>
+  <version>${revision}</version>
   <properties>
-      <revision>1.0.3</revision>
+      <revision>1.1.0</revision>
   </properties>
   <name>IOpipe Java Log4j2 Logger Adapter</name>
   <url>https://www.iopipe.com/</url>
   <scm>
   	<connection>scm:git:https://github.com/iopipe/iopipe-java-logger-log4j2</connection>
     <url>https://github.com/iopipe/iopipe-java-logger-log4j2</url>
-    <tag>1.0.3</tag>
+    <tag>${revision}</tag>
   </scm>
   <developers>
    <developer>
@@ -39,6 +39,7 @@
     This project contains the adapter for Log4j2 so that logging events
     are captured and uploaded to IOpipe.
   </description>
+  
   <dependencies>
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
@@ -81,73 +82,10 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <repositories>
-    <repository>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-      <id>bintray-iopipe-maven</id>
-      <name>bintray</name>
-      <url>https://dl.bintray.com/iopipe/iopipe</url>
-    </repository>
-  </repositories>
-  <distributionManagement>
-    <repository>
-      <id>distro-bintray</id>
-      <name>distro-bintray</name>
-      <url>https://api.bintray.com/maven/iopipe/iopipe-logger-log4j2/iopipe-logger-log4j2/;publish=1</url>
-    </repository>
-  </distributionManagement>
-  
-  <!-- Deploy to bintray. -->
-  <profiles>
-    <profile>
-      <id>distro-bintray</id>
-      <build>
-        <plugins>
-  
-          <!-- Disable default deployer. -->
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-deploy-plugin</artifactId>
-            <configuration>
-              <skip>true</skip>
-            </configuration>
-          </plugin>
-  
-          <!-- Enable alternative deployer. -->
-          <plugin>
-            <groupId>com.carrotgarden.maven</groupId>
-            <artifactId>bintray-maven-plugin</artifactId>
-            <configuration>
-              <skip>false</skip>
-  
-              <!-- Bintray oranization name. -->
-              <subject>iopipe</subject>
-  
-              <!-- Bintray target repository. -->
-              <repository>iopipe-logger-log4j2</repository>
-  
-              <!-- Bintray credentials in settings.xml. -->
-              <serverId>distro-bintary</serverId>
-  
-            </configuration>
-            <executions>
-              <!-- Activate "bintary:deploy" during "deploy" -->
-              <execution>
-                <goals>
-                  <goal>deploy</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
   
   <build>
     <plugins>
+      <!-- Used to make it so the JavaDoc and sources are included. -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
@@ -160,6 +98,20 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- End of sources/javadoc inclusion. -->
+      
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
