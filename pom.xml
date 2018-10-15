@@ -4,16 +4,16 @@
   <groupId>com.iopipe</groupId>
   <artifactId>iopipe-logger-log4j2</artifactId>
   <packaging>jar</packaging>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
   <properties>
-      <revision>1.0.2</revision>
+      <revision>1.0.3</revision>
   </properties>
   <name>IOpipe Java Log4j2 Logger Adapter</name>
   <url>https://www.iopipe.com/</url>
   <scm>
   	<connection>scm:git:https://github.com/iopipe/iopipe-java-logger-log4j2</connection>
     <url>https://github.com/iopipe/iopipe-java-logger-log4j2</url>
-    <tag>1.0.2</tag>
+    <tag>1.0.3</tag>
   </scm>
   <developers>
    <developer>
@@ -148,6 +148,18 @@
   
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
