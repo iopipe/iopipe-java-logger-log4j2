@@ -29,7 +29,7 @@ fi
 # Export these
 export BINTRAY_SUBJECT="iopipe"
 export BINTRAY_REPO="iopipe-logger-log4j2"
-export BINTRAY_PACKAGE="iopipe"
+export BINTRAY_PACKAGE="iopipe-logger-log4j2"
 
 # And realpath
 if ! which realpath
