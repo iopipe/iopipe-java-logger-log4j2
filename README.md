@@ -48,3 +48,6 @@ to report to IOpipe (the error level may be modified accordingly as needed):
 </Configuration>
 ```
 
+Once you’re setup, you will need to configure IOpipe to enable the logging plugin. You can do this by setting the `IOPIPE_LOGGER_ENABLED` environment variable to `true` in the AWS Lambda configuration.
+
+
